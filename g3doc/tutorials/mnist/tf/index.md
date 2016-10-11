@@ -8,7 +8,7 @@ Code: [tensorflow/examples/tutorials/mnist/](https://www.tensorflow.org/code/ten
 
 이 튜토리얼은 일반적으로 기계 학습을 가르치기위한 것이 아닙니다.
 
-당신이 다음의 지시 사항을 준수했는지 확인하십시오 [install TensorFlow](../../../get_started/os_setup.md).
+당신은 다음의 [텐서플로우 설치](../../../get_started/os_setup.md) 지시 사항을 준수하였는지 확인하십시오.
 
 ## 튜토리얼 파일(Tutorial Files)
 
