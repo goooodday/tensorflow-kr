@@ -1,42 +1,41 @@
 # 텐서플로우 기능적 구성 101(TensorFlow Mechanics 101)
 
-Code: [tensorflow/examples/tutorials/mnist/](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/)
+코드 : [tensorflow/examples/tutorials/mnist/](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/)
 
-이 튜토리얼의 목적은 (전통적인)MNIST 데이터 셋을 사용하여 손글씨 숫자 분류를 위한 간단한 피드 포워드(feed-forward) 신경망으로 
-학습하고 평가하기 위해 텐서플로우를 사용하는 방법을 보여주는 것입니다.
+이 튜토리얼의 목적은 (고전적인)MNIST 데이터 셋을 사용하여 필기 숫자의 분류(classification)를 위한
+간단한 피드 포워드(feed-forward) 신경망으로 학습하고 평가하기 위해 텐서플로우를 사용하는 방법을 보여주는 것입니다.
 이 튜토리얼이 의도하는 대상은 텐서플로우 사용에 관심이 있는 숙련된 기계 학습(machine learning) 사용자입니다.
 
 이 튜토리얼은 일반적으로 기계 학습을 가르치기위한 것이 아닙니다.
 
-당신은 다음의 [텐서플로우 설치](../../../get_started/os_setup.md) 지시 사항을 준수하였는지 확인하십시오.
+당신은 [텐서플로우 설치](../../../get_started/os_setup.md) 숙지사항을 확인하십시오.
 
-## 튜토리얼 파일(Tutorial Files)
+## 튜토리얼 파일
 
-이 튜토리얼은 다음과 같은 파일을 참조 :
+이 튜토리얼은 다음 파일을 참조합니다.
 
-File | Purpose
+파일 | 목적
 --- | ---
-[`mnist.py`](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/mnist.py) | 이 코드는 완전 연결된(fully-connected) MNIST 모델을 빌드합니다.
-[`fully_connected_feed.py`](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/fully_connected_feed.py) | The main code to train the built MNIST model against the downloaded dataset using a feed dictionary.
+[`mnist.py`](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/mnist.py) | 완전 연결된(fully-connected) MNIST 모델을 빌드하기 위한 코드.
+[`fully_connected_feed.py`](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/fully_connected_feed.py) | 피드 딕셔너리(feed dictionary) 를 사용하여 다운로드한 데이터 셋에 대한 기본 MNIST 모델을 학습하는 주 코드.
 
-Simply run the `fully_connected_feed.py` file directly to start training:
+간단하게 학습을 시작하려면 `fully_connected_feed.py` 파일을 직접 실행하면됩니다:
 
 ```bash
 python fully_connected_feed.py
 ```
 
-## Prepare the Data
+## 데이터 준비
 
-MNIST is a classic problem in machine learning. The problem is to look at
-greyscale 28x28 pixel images of handwritten digits and determine which digit
-the image represents, for all the digits from zero to nine.
+MNIST는 기계 학습의 고전적인 문제입니다. 이 문제는 필기 숫자들의 그레이스케일 28x28 픽셀 이미지를 보고,
+0부터 9까지의 모든 숫자들에 대해 이미지가 어떤 숫자를 나타내는지 판별하는 것입니다.
 
-![MNIST Digits](../../../images/mnist_digits.png "MNIST Digits")
+![MNIST 숫자](../../../images/mnist_digits.png "MNIST Digits")
 
-For more information, refer to [Yann LeCun's MNIST page](http://yann.lecun.com/exdb/mnist/)
-or [Chris Olah's visualizations of MNIST](http://colah.github.io/posts/2014-10-Visualizing-MNIST/).
+좀 더 많은 정보를 원하시면, [Yann LeCun's MNIST page](http://yann.lecun.com/exdb/mnist/)
+또는 [Chris Olah's visualizations of MNIST](http://colah.github.io/posts/2014-10-Visualizing-MNIST/)를 참조하시면 됩니다.
 
-### Download
+### 다운로드
 
 At the top of the `run_training()` method, the `input_data.read_data_sets()`
 function will ensure that the correct data has been downloaded to your local
