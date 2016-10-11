@@ -1,24 +1,22 @@
-# TensorFlow Mechanics 101
+# 텐서플로우 기능적 구성 101(TensorFlow Mechanics 101)
 
 Code: [tensorflow/examples/tutorials/mnist/](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/)
 
-The goal of this tutorial is to show how to use TensorFlow to train and
-evaluate a simple feed-forward neural network for handwritten digit
-classification using the (classic) MNIST data set.  The intended audience for
-this tutorial is experienced machine learning users interested in using
-TensorFlow.
+이 튜토리얼의 목적은 (전통적인)MNIST 데이터 셋을 사용하여 손글씨 숫자 분류를 위한 간단한 피드 포워드(feed-forward) 신경망으로 
+학습하고 평가하기 위해 텐서플로우를 사용하는 방법을 보여주는 것입니다.
+이 튜토리얼이 의도하는 대상은 텐서플로우 사용에 관심이 있는 숙련된 기계 학습(machine learning) 사용자입니다.
 
-These tutorials are not intended for teaching Machine Learning in general.
+이 튜토리얼은 일반적으로 기계 학습을 가르치기위한 것이 아닙니다.
 
-Please ensure you have followed the instructions to [install TensorFlow](../../../get_started/os_setup.md).
+당신은 다음의 [텐서플로우 설치](../../../get_started/os_setup.md) 지시 사항을 준수하였는지 확인하십시오.
 
-## Tutorial Files
+## 튜토리얼 파일(Tutorial Files)
 
-This tutorial references the following files:
+이 튜토리얼은 다음과 같은 파일을 참조 :
 
 File | Purpose
 --- | ---
-[`mnist.py`](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/mnist.py) | The code to build a fully-connected MNIST model.
+[`mnist.py`](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/mnist.py) | 이 코드는 완전 연결된(fully-connected) MNIST 모델을 빌드합니다.
 [`fully_connected_feed.py`](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/fully_connected_feed.py) | The main code to train the built MNIST model against the downloaded dataset using a feed dictionary.
 
 Simply run the `fully_connected_feed.py` file directly to start training:
