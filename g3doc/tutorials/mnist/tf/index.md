@@ -1,4 +1,4 @@
-# 텐서플로우 기능적 구성 101(TensorFlow Mechanics 101)
+# 텐서플로우 기능적 구성 101
 
 코드 : [tensorflow/examples/tutorials/mnist/](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/)
 
@@ -37,28 +37,25 @@ MNIST는 기계 학습의 고전적인 문제입니다. 이 문제는 필기 숫
 
 ### 다운로드
 
-At the top of the `run_training()` method, the `input_data.read_data_sets()`
-function will ensure that the correct data has been downloaded to your local
-training folder and then unpack that data to return a dictionary of `DataSet`
-instances.
+`run_training()` 메소드의 상단에있는 `input_data.read_data_sets()` 함수는
+올바른 데이터가 해당 로컬의 학습 폴더에 다운로드되어 있는지 확인하고 `DataSet` 인스턴스의 반환된
+딕셔너리 데이터를 압축 해제합니다.
 
 ```python
 data_sets = input_data.read_data_sets(FLAGS.train_dir, FLAGS.fake_data)
 ```
 
-**NOTE**: The `fake_data` flag is used for unit-testing purposes and may be
-safely ignored by the reader.
+**노트**: 이 `fake_data` 플래그는 단위 테스트를 목적으로 사용되며 독자들은 무시할 수 있습니다.
 
-Dataset | Purpose
+데이터셋 | 목적
 --- | ---
-`data_sets.train` | 55000 images and labels, for primary training.
-`data_sets.validation` | 5000 images and labels, for iterative validation of training accuracy.
-`data_sets.test` | 10000 images and labels, for final testing of trained accuracy.
+`data_sets.train` | 기본 학습을 위한 55000 이미지와 레이블.
+`data_sets.validation` | 학습 정도의 반복 검증을 위한 5000 이미지와 레이블.
+`data_sets.test` | 학습 정도의 마지막 테스트를 위한 10000 이미지와 레이블.
 
-For more information about the data, please read the [Download](../../../tutorials/mnist/download/index.md)
-tutorial.
+데이터에 대한 좀 더 많은 정보를 원하시면 [다운로드](../../../tutorials/mnist/download/index.md) 튜토리얼을 보십시오.
 
-### Inputs and Placeholders
+### 입력 및 플레이스홀드
 
 The `placeholder_inputs()` function creates two [`tf.placeholder`](../../../api_docs/python/io_ops.md#placeholder)
 ops that define the shape of the inputs, including the `batch_size`, to the
