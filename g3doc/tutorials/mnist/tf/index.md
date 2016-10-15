@@ -1,4 +1,4 @@
-# 텐서플로우 기능적 구성 101
+# 텐서플로우 기능적 구성 기본서
 
 코드 : [tensorflow/examples/tutorials/mnist/](https://www.tensorflow.org/code/tensorflow/examples/tutorials/mnist/)
 
@@ -55,11 +55,11 @@ data_sets = input_data.read_data_sets(FLAGS.train_dir, FLAGS.fake_data)
 
 데이터에 대한 좀 더 많은 정보를 원하시면 [다운로드](../../../tutorials/mnist/download/index.md) 튜토리얼을 보십시오.
 
-### 입력 및 플레이스홀드
+### 입력 및 플레이스홀드(Placeholder)
 
-The `placeholder_inputs()` function creates two [`tf.placeholder`](../../../api_docs/python/io_ops.md#placeholder)
-ops that define the shape of the inputs, including the `batch_size`, to the
-rest of the graph and into which the actual training examples will be fed.
+`placeholder_inputs()` 함수는 그래프에 `batch_size`를 포함한 입력 형태를 정의하는
+두 개의 [`tf.placeholder`](../../../api_docs/python/io_ops.md#placeholder) 오퍼레이션을 생성하는데
+여기서는 실제 학습의 예제가 공급됩니다.
 
 ```python
 images_placeholder = tf.placeholder(tf.float32, shape=(batch_size,
@@ -67,29 +67,23 @@ images_placeholder = tf.placeholder(tf.float32, shape=(batch_size,
 labels_placeholder = tf.placeholder(tf.int32, shape=(batch_size))
 ```
 
-Further down, in the training loop, the full image and label datasets are
-sliced to fit the `batch_size` for each step, matched with these placeholder
-ops, and then passed into the `sess.run()` function using the `feed_dict`
-parameter.
+또 아래의 학습 반복처리에서 전체 이미지와 레이블 데이터셋는 각 단계에 대한 `batch_size`에 맞게 나누고
+플레이스홀드 오퍼레이션과 일치시켜 `feed_dict`파라미터를 사용하여 `sess.run()` 함수 내에서 수행됩니다.
 
-## Build the Graph
+## 그래프 빌드
 
-After creating placeholders for the data, the graph is built from the
-`mnist.py` file according to a 3-stage pattern: `inference()`, `loss()`, and
-`training()`.
+데이터에 대한 플레이스홀드를 생성 후 그래프는 `mnist.py`파일에서 3단계의 패턴(`inference()`, `loss()` 그리고
+`training()`)을 거쳐서 빌드됩니다.
 
-1.  `inference()` - Builds the graph as far as is required for running
-the network forward to make predictions.
-1.  `loss()` - Adds to the inference graph the ops required to generate
-loss.
-1.  `training()` - Adds to the loss graph the ops required to compute
-and apply gradients.
+1.  `inference()` - 앞으로를 예측하는 네트워크 실행에 필요한 그래프를 빌드.
+1.  `loss()` - 오퍼레이션이 요구한 손실(loss)값을 생성하여 인퍼런스 그래프에 추가.
+1.  `training()` - 오퍼레이션이 요구한 계산과 그라디언트를 적용하여 손실(loss) 그래프에 추가.
 
 <div style="width:95%; margin:auto; margin-bottom:10px; margin-top:20px;">
   <img style="width:100%" src="../../../images/mnist_subgraph.png">
 </div>
 
-### Inference
+### 추론(Inference)
 
 The `inference()` function builds the graph as far as needed to
 return the tensor that would contain the output predictions.
